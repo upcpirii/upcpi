@@ -6,17 +6,18 @@ use Hyn\Tenancy\Traits\UsesTenantConnection;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use UPCEngineering\Eloquent\Concerns\HasNameAttribute;
+use UPCEngineering\Traits\UsesSearchableTenantConnection;
 
 class Member extends Authenticatable
 {
+    use HasNameAttribute, SoftDeletes, UsesSearchableTenantConnection;
+
     /**
      * The table associated with the model.
      *
      * @var string
      */
     protected $table = 'members';
-
-    use HasNameAttribute, SoftDeletes, UsesTenantConnection;
 
     /**
      * The attributes that are mass assignable.

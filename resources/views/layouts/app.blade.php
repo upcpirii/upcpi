@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title') - UPC Portal</title>
 
-
     <link rel="stylesheet" href="{!! mix('css/vendor.css') !!}"/>
     <link rel="stylesheet" href="{!! mix('css/app.css') !!}"/>
 
