@@ -46,14 +46,16 @@ Route::get('/', function () {
 });
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::get('/home', 'HomeController@index')->name('home');
+    $this->get('/home', 'HomeController@index')->name('home');
 
-    Route::group(['namespace' => 'Member'], function () {
-        Route::get('/members', 'Controller@index')->name('member.index');
-        Route::get('/members/data', 'Controller@data')->name('member.data');
-        Route::get('/members/{member}', 'Controller@show')->name('member.show');
-        Route::get('/members/{member}/general', 'GeneralInformationController@show')->name('member.general.show');
+    $this->group(['namespace' => 'Member'], function () {
+        $this->get('/members', 'Controller@index')->name('member.index');
+        $this->get('/members/data', 'Controller@data')->name('member.data');
+        $this->get('/members/{member}', 'Controller@show')->name('member.show');
+        $this->get('/members/{member}/general', 'GeneralInformationController@show')->name('member.general.show');
     });
+
+    $this->get('search', 'SearchController@show');
 });
 
 Route::get('/user', function () {

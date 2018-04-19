@@ -6,7 +6,7 @@
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                         <span class="clear">
                             <span class="block m-t-xs">
-                                <strong class="font-bold">Example user</strong>
+                                <strong class="font-bold">{{ Auth::user()->display_name }}</strong>
                             </span> <span class="text-muted text-xs block">Example menu <b class="caret"></b></span>
                         </span>
                     </a>

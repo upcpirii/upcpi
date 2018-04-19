@@ -102,6 +102,7 @@ class Svg extends BaconQrCodeSvg
         $circle->addAttribute('cx', $x);
         $circle->addAttribute('cy', $y);
         $circle->addAttribute('r', $this->blockSize / 2);
+        $circle->addAttribute('fill', '#' . $this->colors[$colorId]);
     }
 
     /**

@@ -2,21 +2,21 @@
 
 namespace UPCEngineering\Eloquent;
 
-use Hyn\Tenancy\Traits\UsesTenantConnection;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use UPCEngineering\Eloquent\Concerns\HasNameAttribute;
+use UPCEngineering\Traits\UsesSearchableTenantConnection;
 
 class Member extends Authenticatable
 {
+    use HasNameAttribute, SoftDeletes, UsesSearchableTenantConnection;
+
     /**
      * The table associated with the model.
      *
      * @var string
      */
     protected $table = 'members';
-
-    use HasNameAttribute, SoftDeletes, UsesTenantConnection;
 
     /**
      * The attributes that are mass assignable.
@@ -92,5 +92,10 @@ class Member extends Authenticatable
         $relation = $this->hasOne(Department::class, 'id', 'department_id')->first();
 
         return $this->attributes['department'] = optional($relation)->name;
+    }
+
+    public function toSearchableArray()
+    {
+        return $this->toArray() + ['path' => route('member.show', $this)];
     }
 }
