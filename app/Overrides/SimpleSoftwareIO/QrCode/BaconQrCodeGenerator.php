@@ -32,10 +32,12 @@ class BaconQrCodeGenerator extends Generator
      */
     public function format($format)
     {
-        if ($format == 'svg') {
-            $this->writer->setRenderer(new Svg());
-        } else {
-            parent::format($format);
+        switch ($format) {
+            case 'svg':
+                $this->writer->setRenderer(new Svg());
+                break;
+            default:
+                parent::format($format);
         }
 
         return $this;

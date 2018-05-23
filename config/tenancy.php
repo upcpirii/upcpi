@@ -193,9 +193,10 @@ return [
         'tenant-migrations-path' => database_path('migrations/tenant'),
 
         /**
-         * Seeds the newly created tenant database based on this Seeder.
+         * The default Seeder class used on newly created databases and while
+         * running artisan commands that fire seeding.
          *
-         * @info requires tenant-migrations-path to be in use.
+         * @info requires tenant-migrations-path in order to seed newly created websites.
          *
          * @warn specify a valid fully qualified class name.
          * @example App\Seeders\AdminSeeder::class
@@ -209,6 +210,17 @@ return [
          * @info set to false to disable.
          */
         'auto-create-tenant-database' => true,
+
+        /**
+         * Automatically generate the user needed to access the database.
+         *
+         * @info Useful in case you use root or another predefined user to access the
+         *       tenant database.
+         * @info Only creates in case tenant databases are set to be created.
+         *
+         * @info set to false to disable.
+         */
+        'auto-create-tenant-database-user' => true,
 
         /**
          * Automatically rename the tenant database when the random id of the
@@ -225,7 +237,28 @@ return [
          *
          * @info set to true to enable.
          */
-        'auto-delete-tenant-database' => false,
+        'auto-delete-tenant-database' => env('TENANCY_DATABASE_AUTO_DELETE', false),
+
+        /**
+         * Automatically delete the user needed to access the tenant database.
+         *
+         * @info Set to false to disable.
+         * @info Only deletes in case tenant database is set to be deleted.
+         */
+        'auto-delete-tenant-database-user' => env('TENANCY_DATABASE_AUTO_DELETE_USER', false),
+
+        /**
+         * Define a list of classes that you wish to force onto the tenant or system connection.
+         * The connection will be forced when the Model has booted.
+         *
+         * @info Useful for overriding the connection of third party packages.
+         */
+        'force-tenant-connection-of-models' => [
+//            \App\User::class
+        ],
+        'force-system-connection-of-models' => [
+//            \App\User::class
+        ],
     ],
     'folders' => [
         'config' => [

@@ -18,17 +18,16 @@ use Hyn\Tenancy\Contracts\Repositories\WebsiteRepository;
 use Hyn\Tenancy\Database\Connection;
 use Hyn\Tenancy\Traits\AddWebsiteFilterOnCommand;
 use Illuminate\Contracts\Events\Dispatcher;
-use Illuminate\Database\Migrations\Migrator;
-use InvalidArgumentException;
-use Symfony\Component\Console\Input\InputOption;
 
-trait MutatesCommands
+trait MutatesScoutCommands
 {
     use AddWebsiteFilterOnCommand;
+
     /**
      * @var WebsiteRepository
      */
     private $websites;
+
     /**
      * @var Connection
      */
@@ -45,6 +44,12 @@ trait MutatesCommands
         $this->connection = app(Connection::class);
     }
 
+    /**
+     * Execute the console command.
+     *
+     * @param Dispatcher $event
+     * @return void
+     */
     public function handle(Dispatcher $event)
     {
         $this->processHandle(function ($website) use ($event) {

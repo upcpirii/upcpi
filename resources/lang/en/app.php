@@ -13,6 +13,8 @@ return [
     'u_date_of_birth'   => 'Date of Birth',
     'u_last_fellowship' => 'Last Fellowship',
 
+    'u_edit' => 'Edit',
+
     'u_members'     => 'Members',
     'u_member_list' => 'Member List',
 

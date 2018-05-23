@@ -4,7 +4,10 @@ namespace UPCEngineering\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use UPCEngineering\Console\Commands\CreateTenantCommand;
+use UPCEngineering\Console\Scout\FlushCommand;
 use UPCEngineering\Console\Scout\ImportCommand;
+use UPCEngineering\Console\Tinker\TinkerCommand;
 
 class Kernel extends ConsoleKernel
 {
@@ -14,7 +17,10 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        ImportCommand::class
+        FlushCommand::class,
+        ImportCommand::class,
+        TinkerCommand::class,
+        CreateTenantCommand::class,
     ];
 
     /**

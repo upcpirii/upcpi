@@ -15,18 +15,21 @@
 
 <body class="gray-bg">
 
+
 <div class="middle-box text-center loginscreen animated fadeInDown">
     <div>
         <div>
 
-            <h1 class="logo-name">IN+</h1>
-
+            <br />
+            <br />
+            {!! media('login-logo.png', '170px') !!}
+            <br />
+            <br />
         </div>
         <h3>Welcome to UPCWeb</h3>
-        <p>Perfectly designed and precisely prepared admin theme with over 50 pages with extra new web app views.
+        <p>
             <!--Continually expanded and constantly improved Inspinia Admin Them (IN+)-->
         </p>
-        <p>Login in. To see it in action.</p>
         <form class="m-t" role="form" method="POST" action="{{ route('login') }}">
             {!! csrf_field() !!}
             @if($errors->has('email'))

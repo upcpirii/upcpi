@@ -2,7 +2,6 @@
 
 namespace UPCEngineering\Traits;
 
-use Hyn\Tenancy\Environment;
 use Hyn\Tenancy\Traits\UsesTenantConnection;
 use Laravel\Scout\Searchable;
 
@@ -17,30 +16,10 @@ trait UsesSearchableTenantConnection
      */
     public function searchableAs()
     {
-        return 'members_index';
-    }
+        $prefix = $this->getConnection()->getDatabaseName();
 
-    /**
-     * Get the indexable data array for the model.
-     *
-     * @return array
-     */
-    public function toSearchableArray()
-    {
-        $array = $this->toArray();
+        $index = [$prefix, $this->table, 'index'];
 
-        // Customize array...
-
-        return $array;
-    }
-
-    /**
-     * Get the value used to index the model.
-     *
-     * @return mixed
-     */
-    public function getScoutKey()
-    {
-        return $this->uuid;
+        return implode('_', $index);
     }
 }

@@ -105,7 +105,7 @@ return [
         /**
          * The php sock to be used.
          */
-        'php-sock' => 'unix:/var/run/php/php7.1-fpm.sock',
+        'php-sock' => '127.0.0.1:9000',
 
         /**
          * Define the ports of your nginx service.
@@ -116,13 +116,13 @@ return [
              *
              * @default 80
              */
-            'http' => 80,
+            'http' => 8080,
             /**
              * HTTPS, SSL port.
              *
              * @default 443
              */
-            'https' => 443
+            'https' => 8443
         ],
 
         /**
@@ -149,7 +149,7 @@ return [
              * Location where vhost configuration files can be found.
              */
             'vhost-files' => [
-                '/etc/nginx/sites-enabled/'
+                '/Users/b8/Sites/_enabled/'
             ],
 
             /**
@@ -159,15 +159,15 @@ return [
                 /**
                  * Action that asserts nginx is installed.
                  */
-                'exists' => '/etc/init.d/nginx',
+                'exists' => 'nginx',
                 /**
                  * Action to run to test the nginx configuration.
                  */
-                'test-config' => '/etc/init.d/nginx configtest',
+                'test-config' => 'nginx -t',
                 /**
                  * Action to run to reload the nginx service.
                  */
-                'reload' => 'systemctl restart nginx'
+                'reload' => 'brew services restart nginx'
             ]
         ]
     ]

@@ -23,7 +23,7 @@
         </div>
         <div class="col-lg-3">
             <div class="title-action">
-                <a href="#" class="btn btn-white"><i class="fa fa-pencil"></i> Edit </a>
+                <a href="#" id="edit" class="btn btn-white" data-toggle="modal" data-target="#myModal"><i class="fa fa-pencil"></i> {{ __('app.u_edit') }} </a>
             </div>
         </div>
     </div>
@@ -32,6 +32,15 @@
 @section('content')
     <div class="wrapper wrapper-content animated fadeInRight">
         <div class="row">
+            <div class="modal inmodal" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog modal-sm">
+                    <div class="modal-content animated fadeIn">
+                        <div class="modal-body">
+                            <p class="text-center"> {!!  display_uuid($member->uuid) !!}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="col-lg-2">
                 <div class="ibox-content p-lg text-center">
                     <div class="m-b-md">
@@ -42,10 +51,12 @@
                     </div>
                     <img src="/images/avatars/{{ $image }}" width="140px" height="140px" class="img-circle circle-border m-b-md"
                          alt="profile">
+{{--                    {!! display_uuid($member->uuid) !!}--}}
                     <div>
                         <span><i class="fa fa-envelope-o"></i></span> |
                         <span><i class="fa fa-mobile-phone"></i></span> |
-                        <span><i class="fa fa-phone"></i></span>
+                        <span><i class="fa fa-phone"></i></span> |
+                        <span><i class="fa fa-qrcode" data-toggle="modal" data-target="#myModal"></i></span>
                     </div>
                 </div>
                 <div class="text-box no-padding">

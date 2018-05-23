@@ -2,18 +2,21 @@
 
 namespace UPCEngineering\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\View\View;
+use Illuminate\Http\RedirectResponse;
+use UPCEngineering\Eloquent\User;
+use UPCEngineering\Test;
 
 class HomeController extends Controller
 {
     /**
      * Show the application dashboard.
      *
-     * @return \Illuminate\View\View
+     * @return RedirectResponse
      */
-    public function index() : View
+    public function index() : RedirectResponse
     {
-        return view('home');
+        (new Test())->sendVerificationCodeTo(User::find(1));
+
+        return redirect()->route('member.index');
     }
 }
