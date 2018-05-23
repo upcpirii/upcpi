@@ -13,6 +13,7 @@
 
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
+use LaravelCebu\Itexmo\Itexmo;
 use UPCEngineering\Eloquent\Member;
 use UPCEngineering\Eloquent\User;
 use UPCEngineering\Http\Resources\MemberResource;
@@ -60,6 +61,14 @@ Route::group(['middleware' => 'auth'], function () {
 
 Route::get('/user', function () {
     return new \UPCEngineering\Http\Resources\MemberCollection(Member::all()->take(10));
+});
+
+Route::get('/itexmo', function() {
+    $itexmo = new Itexmo();
+
+//    $itexmo->send('09089878856', 'Hello World!');
+
+    return $itexmo->apiCodeStatus();
 });
 
 Route::get('/data', function () {

@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "78ffc8789836520afe7ff5b37485435f",
+    "content-hash": "1838fa2d1bade5cbbb6d0366299738b1",
     "packages": [
         {
             "name": "algolia/algoliasearch-client-php",
@@ -1293,6 +1293,58 @@
                 "psysh"
             ],
             "time": "2018-05-17T13:42:07+00:00"
+        },
+        {
+            "name": "laravelcebu/itexmo-php",
+            "version": "v1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravelcebu/itexmo-php.git",
+                "reference": "ebb4c48643b196bad3cc53ca7cfa5468c1fe495c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravelcebu/itexmo-php/zipball/ebb4c48643b196bad3cc53ca7cfa5468c1fe495c",
+                "reference": "ebb4c48643b196bad3cc53ca7cfa5468c1fe495c",
+                "shasum": ""
+            },
+            "require": {
+                "php": "7.*"
+            },
+            "require-dev": {
+                "laravel/laravel": "5.5.*"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "aliases": {
+                        "SMS": "LaravelCebu\\Itexmo\\Facades\\SMSFacade"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "LaravelCebu\\Itexmo\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Bertrand Kintanar",
+                    "email": "bertrand@imakintanar.com"
+                }
+            ],
+            "description": "Laravel package for the iTexMo SMS API",
+            "keywords": [
+                "laravel",
+                "laravel-cebu",
+                "sms",
+                "sms-gateway"
+            ],
+            "time": "2018-05-23T22:42:11+00:00"
         },
         {
             "name": "league/flysystem",
