@@ -72,7 +72,7 @@
           dom: '<"html5buttons"B>lTfgitp',
           processing: true,
           serverSide: true,
-          ajax: '{!! route('member.data') !!}',
+          ajax: '{!! route('member.datatable.index') !!}',
           buttons: [
             {extend: 'copy'},
             {extend: 'csv'},

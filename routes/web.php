@@ -16,7 +16,6 @@ use Illuminate\Support\Facades\DB;
 use LaravelCebu\Itexmo\Itexmo;
 use UPCEngineering\Eloquent\Member;
 use UPCEngineering\Eloquent\User;
-use UPCEngineering\Http\Resources\MemberResource;
 
 Route::group(['middleware' => ['web'], 'namespace' => 'Auth'], function () {
     // Authentication Routes...
@@ -51,7 +50,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     $this->group(['namespace' => 'Member'], function () {
         $this->get('/members', 'Controller@index')->name('member.index');
-        $this->get('/members/data', 'Controller@data')->name('member.data');
+        $this->get('/members/data', 'DataTableController@index')->name('member.datatable.index');
         $this->get('/members/{member}', 'Controller@show')->name('member.show');
         $this->get('/members/{member}/general', 'GeneralInformationController@show')->name('member.general.show');
     });

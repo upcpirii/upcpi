@@ -15,10 +15,12 @@ class FamilyController extends Controller
 {
     /**
      * @param FamilyRequest $request
-     * @return
+     *
+     * @return Family
+     *
      * @throws FamilyAlreadyExistsException
      */
-    public function store(FamilyRequest $request)
+    public function store(FamilyRequest $request): Family
     {
         $data = $request->all();
 

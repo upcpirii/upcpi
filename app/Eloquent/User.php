@@ -6,11 +6,12 @@ use Hyn\Tenancy\Traits\UsesTenantConnection;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Spatie\Permission\Traits\HasRoles;
 use UPCEngineering\Eloquent\Concerns\HasNameAttribute;
 
 class User extends Authenticatable
 {
-    use HasNameAttribute, Notifiable, SoftDeletes, UsesTenantConnection;
+    use HasNameAttribute, HasRoles, Notifiable, SoftDeletes, UsesTenantConnection;
 
     /**
      * The table associated with the model.

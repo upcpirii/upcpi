@@ -2,6 +2,7 @@
 
 namespace UPCEngineering\Http\Controllers\Member;
 
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Ramsey\Uuid\Uuid;
@@ -16,17 +17,22 @@ class Controller extends BaseController
         return view('member.index');
     }
 
-    public function show(Member $member)
+    /**
+     * @param Member $member
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function show(Member $member): RedirectResponse
     {
         return redirect()->route('member.general.show', compact('member'));
     }
 
-    public function data()
-    {
-        return datatables()->of(Member::all())->make(true);
-    }
-
-    public function store(MemberRequest $request)
+    /**
+     * @param MemberRequest $request
+     *
+     * @return Member
+     */
+    public function store(MemberRequest $request) : Member
     {
         $data = $request->all();
 

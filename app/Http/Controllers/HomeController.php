@@ -15,7 +15,7 @@ class HomeController extends Controller
      */
     public function index() : RedirectResponse
     {
-        (new Test())->sendVerificationCodeTo(User::find(1));
+//        (new Test())->sendVerificationCodeTo(User::find(1));
 
         return redirect()->route('member.index');
     }

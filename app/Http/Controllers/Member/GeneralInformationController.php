@@ -2,12 +2,18 @@
 
 namespace UPCEngineering\Http\Controllers\Member;
 
+use Illuminate\View\View;
 use UPCEngineering\Eloquent\Member;
 use UPCEngineering\Http\Controllers\Controller as BaseController;
 
 class GeneralInformationController extends BaseController
 {
-    public function show(Member $member)
+    /**
+     * @param Member $member
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function show(Member $member) : View
     {
         $images = ['abinav_t.jpg', 'admod.jpg', 'ashleyford.jpg', 'azielsilas.jpg', 'brad_frost.jpg', 'calebogden.jpg', 'csswizardry.jpg', 'dancounsell.jpg', 'dzyngiri.jpg', 'jadlimcaco.jpg', 'jsa.jpg', 'k.jpg', 'kastov_yury.jpg', 'marcogomes.jpg', 'nckjrvs.jpg', 'rem.jpg', 'ritu.jpg', 'sauro.jpg', 'talhaconcepts.jpg', 'tonystubblebine.jpg', 'vladabazhan.jpg', 'zack415.jpg', 'zeldman.jpg', 'admod.jpg', 'ashleyford.jpg', 'azielsilas.jpg', 'brad_frost.jpg', 'calebogden.jpg', 'csswizardry.jpg', 'dancounsell.jpg', 'dzyngiri.jpg', 'jadlimcaco.jpg', 'jsa.jpg', 'k.jpg', 'kastov_yury.jpg', 'marcogomes.jpg', 'nckjrvs.jpg', 'rem.jpg', 'ritu.jpg', 'sauro.jpg', 'talhaconcepts.jpg', 'tonystubblebine.jpg', 'vladabazhan.jpg', 'zack415.jpg', 'zeldman.jpg'];
 
