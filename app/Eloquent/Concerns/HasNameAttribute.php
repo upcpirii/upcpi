@@ -31,9 +31,8 @@ trait HasNameAttribute
             return $this->member->displayName;
         }
 
-        // TODO:: get this value from user settings.
-        $chosenVariant = BaseClass::FNAME_MNAME_LNAME;
-        $showSalutation = false;
+        $chosenVariant = user_setting('app.display-name', BaseClass::FNAME_MNAME_LNAME);
+        $showSalutation = user_setting('app.show-salutation', false);
 
         foreach ($this->variants as $variant) {
             $this->attributes['display_name'] = (new $variant($this->attributes, $chosenVariant, $showSalutation))->handle();

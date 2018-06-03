@@ -1,7 +1,9 @@
 <?php
 
 use Hyn\Tenancy\Contracts\CurrentHostname;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use UPCEngineering\Eloquent\UserSetting;
 
 if (!function_exists('display_uuid')) {
     function display_uuid($uuid)
@@ -49,8 +51,31 @@ if (!function_exists('media')) {
         }
 
         $image = base64_encode($content);
-        $mime  = mime_content_type($imagePath);
+        $mime = mime_content_type($imagePath);
 
         return sprintf("<img src='data:%s;base64,%s' height='%s' />", $mime, $image, $height);
+    }
+}
+
+if (!function_exists('user_setting')) {
+    function user_setting($key, $value = null)
+    {
+        $user_id = Auth::user()->id;
+
+        if (is_null($value)) {
+            $value = UserSetting::where('user_id', $user_id)->where('key', $key)->first();
+
+            if ($value) {
+                return $value;
+            }
+        }
+
+        UserSetting::firstOrCreate([
+            'user_id' => $user_id,
+            'key'     => $key,
+            'value'   => $value,
+        ]);
+
+        return $value;
     }
 }
