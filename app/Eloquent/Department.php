@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: b8
- * Date: 12/04/2018
- * Time: 03:20
- */
 
 namespace UPCEngineering\Eloquent;
 
