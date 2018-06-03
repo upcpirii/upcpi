@@ -1,15 +1,22 @@
 <?php
 
 /*
- * This file is part of the hyn/multi-tenant package.
+ * This file is part of the UPCPI Software package.
  *
- * (c) Daniël Klabbers <daniel@klabbers.email>
+ * NOTICE OF LICENSE
  *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
+ * Licensed under the 3-clause BSD License.
  *
- * @see https://laravel-tenancy.com
- * @see https://github.com/hyn/multi-tenant
+ * This source file is subject to the 3-clause BSD License that is
+ * bundled with this package in the LICENSE file.
+ *
+ * @version    alpha
+ *
+ * @author     Bertrand Kintanar <bertrand@imakintanar.com>
+ * @license    BSD License (3-clause)
+ * @copyright  (c) 2017-2018, UPC Engineering
+ *
+ * @link       https://bitbucket.org/bkintanar/upcpi
  */
 
 namespace UPCEngineering\Traits;
@@ -37,7 +44,7 @@ trait MutatesScoutCommands
     {
         parent::__construct();
 
-        $this->setName('tenancy:' . $this->getName());
+        $this->setName('tenancy:'.$this->getName());
         $this->specifyParameters();
 
         $this->websites = app(WebsiteRepository::class);
@@ -48,6 +55,7 @@ trait MutatesScoutCommands
      * Execute the console command.
      *
      * @param Dispatcher $event
+     *
      * @return void
      */
     public function handle(Dispatcher $event)

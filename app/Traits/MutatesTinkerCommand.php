@@ -1,15 +1,22 @@
 <?php
 
 /*
- * This file is part of the hyn/multi-tenant package.
+ * This file is part of the UPCPI Software package.
  *
- * (c) Daniël Klabbers <daniel@klabbers.email>
+ * NOTICE OF LICENSE
  *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
+ * Licensed under the 3-clause BSD License.
  *
- * @see https://laravel-tenancy.com
- * @see https://github.com/hyn/multi-tenant
+ * This source file is subject to the 3-clause BSD License that is
+ * bundled with this package in the LICENSE file.
+ *
+ * @version    alpha
+ *
+ * @author     Bertrand Kintanar <bertrand@imakintanar.com>
+ * @license    BSD License (3-clause)
+ * @copyright  (c) 2017-2018, UPC Engineering
+ *
+ * @link       https://bitbucket.org/bkintanar/upcpi
  */
 
 namespace UPCEngineering\Traits;
@@ -36,7 +43,7 @@ trait MutatesTinkerCommand
     {
         parent::__construct();
 
-        $this->setName('tenancy:' . $this->getName());
+        $this->setName('tenancy:'.$this->getName());
 
         $this->websites = app(WebsiteRepository::class);
         $this->connection = app(Connection::class);
@@ -45,21 +52,21 @@ trait MutatesTinkerCommand
     /**
      * Execute the console command.
      *
-     * @return void
-     *
      * @throws \Hyn\Tenancy\Exceptions\ConnectionException
+     *
+     * @return void
      */
     public function handle()
     {
         $website_id = $this->option('website_id');
 
-        try{
+        try {
             $website = $this->websites->query()->where('id', $website_id)->firstOrFail();
 
             $this->connection->set($website);
 
-            $this->info('Running Tinker on website_id: ' . $website_id);
-            
+            $this->info('Running Tinker on website_id: '.$website_id);
+
             parent::handle();
             $this->connection->purge();
         } catch (ModelNotFoundException $e) {

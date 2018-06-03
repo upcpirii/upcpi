@@ -1,5 +1,24 @@
 <?php
 
+/*
+ * This file is part of the UPCPI Software package.
+ *
+ * NOTICE OF LICENSE
+ *
+ * Licensed under the 3-clause BSD License.
+ *
+ * This source file is subject to the 3-clause BSD License that is
+ * bundled with this package in the LICENSE file.
+ *
+ * @version    alpha
+ *
+ * @author     Bertrand Kintanar <bertrand@imakintanar.com>
+ * @license    BSD License (3-clause)
+ * @copyright  (c) 2017-2018, UPC Engineering
+ *
+ * @link       https://bitbucket.org/bkintanar/upcpi
+ */
+
 namespace UPCEngineering\Exceptions;
 
 use Exception;
@@ -29,7 +48,8 @@ class Handler extends ExceptionHandler
     /**
      * Report or log an exception.
      *
-     * @param  \Exception  $exception
+     * @param \Exception $exception
+     *
      * @return void
      */
     public function report(Exception $exception)
@@ -40,8 +60,9 @@ class Handler extends ExceptionHandler
     /**
      * Render an exception into an HTTP response.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Exception  $exception
+     * @param \Illuminate\Http\Request $request
+     * @param \Exception               $exception
+     *
      * @return \Illuminate\Http\Response
      */
     public function render($request, Exception $exception)

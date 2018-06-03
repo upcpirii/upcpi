@@ -1,22 +1,41 @@
 <?php
 
+/*
+ * This file is part of the UPCPI Software package.
+ *
+ * NOTICE OF LICENSE
+ *
+ * Licensed under the 3-clause BSD License.
+ *
+ * This source file is subject to the 3-clause BSD License that is
+ * bundled with this package in the LICENSE file.
+ *
+ * @version    alpha
+ *
+ * @author     Bertrand Kintanar <bertrand@imakintanar.com>
+ * @license    BSD License (3-clause)
+ * @copyright  (c) 2017-2018, UPC Engineering
+ *
+ * @link       https://bitbucket.org/bkintanar/upcpi
+ */
+
 namespace UPCEngineering\Support\DisplayNames;
 
 class BaseClass
 {
-    const FNAME_LNAME          = 1;
-    const LNAME_COMMA_FNAME    = 2;
-    const FNAME_MNAME_LNAME    = 3;
+    const FNAME_LNAME = 1;
+    const LNAME_COMMA_FNAME = 2;
+    const FNAME_MNAME_LNAME = 3;
     const FNAME_MINITIAL_LNAME = 4;
-    const FNAME_MINITIAL       = 5;
+    const FNAME_MINITIAL = 5;
 
     /**
-     * @var array $attributes
+     * @var array
      */
     protected $attributes;
 
     /**
-     * @var string $middleInitial
+     * @var string
      */
     protected $middleInitial;
 
@@ -26,7 +45,7 @@ class BaseClass
     protected $variant = self::FNAME_LNAME;
 
     /**
-     * @var bool $showSalutation
+     * @var bool
      */
     protected $showSalutation = false;
 

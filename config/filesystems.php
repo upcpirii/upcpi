@@ -1,5 +1,24 @@
 <?php
 
+/*
+ * This file is part of the UPCPI Software package.
+ *
+ * NOTICE OF LICENSE
+ *
+ * Licensed under the 3-clause BSD License.
+ *
+ * This source file is subject to the 3-clause BSD License that is
+ * bundled with this package in the LICENSE file.
+ *
+ * @version    alpha
+ *
+ * @author     Bertrand Kintanar <bertrand@imakintanar.com>
+ * @license    BSD License (3-clause)
+ * @copyright  (c) 2017-2018, UPC Engineering
+ *
+ * @link       https://bitbucket.org/bkintanar/upcpi
+ */
+
 return [
 
     /*
@@ -45,28 +64,28 @@ return [
 
         'local' => [
             'driver' => 'local',
-            'root' => storage_path('app'),
+            'root'   => storage_path('app'),
         ],
 
         'public' => [
-            'driver' => 'local',
-            'root' => storage_path('app/public'),
-            'url' => env('APP_URL').'/storage',
+            'driver'     => 'local',
+            'root'       => storage_path('app/public'),
+            'url'        => env('APP_URL').'/storage',
             'visibility' => 'public',
         ],
 
         's3' => [
             'driver' => 's3',
-            'key' => env('AWS_ACCESS_KEY_ID'),
+            'key'    => env('AWS_ACCESS_KEY_ID'),
             'secret' => env('AWS_SECRET_ACCESS_KEY'),
             'region' => env('AWS_DEFAULT_REGION'),
             'bucket' => env('AWS_BUCKET'),
-            'url' => env('AWS_URL'),
+            'url'    => env('AWS_URL'),
         ],
 
         'dropbox' => [
             'driver' => 'dropbox',
-            'token' => env('DROPBOX_TOKEN'),
+            'token'  => env('DROPBOX_TOKEN'),
         ],
 
     ],

@@ -1,5 +1,24 @@
 <?php
 
+/*
+ * This file is part of the UPCPI Software package.
+ *
+ * NOTICE OF LICENSE
+ *
+ * Licensed under the 3-clause BSD License.
+ *
+ * This source file is subject to the 3-clause BSD License that is
+ * bundled with this package in the LICENSE file.
+ *
+ * @version    alpha
+ *
+ * @author     Bertrand Kintanar <bertrand@imakintanar.com>
+ * @license    BSD License (3-clause)
+ * @copyright  (c) 2017-2018, UPC Engineering
+ *
+ * @link       https://bitbucket.org/bkintanar/upcpi
+ */
+
 namespace UPCEngineering\Console\Commands;
 
 use Hyn\Tenancy\Contracts\Repositories\CustomerRepository;
@@ -51,7 +70,6 @@ class CreateTenantCommand extends Command
         $this->info("Admin {$email} can log in using password {$password}");
     }
 
-
     private function tenantExists($name, $email)
     {
         return Customer::where('name', $name)->orWhere('email', $email)->exists();
@@ -60,18 +78,18 @@ class CreateTenantCommand extends Command
     private function registerTenant($name, $email)
     {
         // create a customer
-        $customer = new Customer;
+        $customer = new Customer();
         $customer->name = $name;
         $customer->email = $email;
         app(CustomerRepository::class)->create($customer);
 
         // associate the customer with a website
-        $website = new Website;
+        $website = new Website();
         $website->customer()->associate($customer);
         app(WebsiteRepository::class)->create($website);
 
         // associate the website with a hostname
-        $hostname = new Hostname;
+        $hostname = new Hostname();
         $baseUrl = env('APP_BASE_URL');
         $hostname->fqdn = "{$name}.{$baseUrl}";
         $hostname->customer()->associate($customer);

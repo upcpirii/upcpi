@@ -1,5 +1,24 @@
 <?php
 
+/*
+ * This file is part of the UPCPI Software package.
+ *
+ * NOTICE OF LICENSE
+ *
+ * Licensed under the 3-clause BSD License.
+ *
+ * This source file is subject to the 3-clause BSD License that is
+ * bundled with this package in the LICENSE file.
+ *
+ * @version    alpha
+ *
+ * @author     Bertrand Kintanar <bertrand@imakintanar.com>
+ * @license    BSD License (3-clause)
+ * @copyright  (c) 2017-2018, UPC Engineering
+ *
+ * @link       https://bitbucket.org/bkintanar/upcpi
+ */
+
 namespace UPCEngineering\Overrides\BaconQrCode\Renderer\Image;
 
 use BaconQrCode\Renderer\Image\Svg as BaconQrCodeSvg;
@@ -9,10 +28,10 @@ use BaconQrCode\Renderer\Image\Svg as BaconQrCodeSvg;
  */
 class Svg extends BaconQrCodeSvg
 {
-    const UPPER_LEFT   = 1;
-    const LOWER_LEFT   = 2;
-    const UPPER_RIGHT  = 3;
-    const LOWER_RIGHT  = 4;
+    const UPPER_LEFT = 1;
+    const LOWER_LEFT = 2;
+    const UPPER_RIGHT = 3;
+    const LOWER_RIGHT = 4;
     const IMAGE_CENTER = 5;
 
     protected $scale_table = [
@@ -53,6 +72,7 @@ class Svg extends BaconQrCodeSvg
      * init(): defined by RendererInterface.
      *
      * @see    ImageRendererInterface::init()
+     *
      * @return void
      */
     public function init()
@@ -66,16 +86,17 @@ class Svg extends BaconQrCodeSvg
      * drawBlock(): defined by RendererInterface.
      *
      * @see    ImageRendererInterface::drawBlock()
-     * @param  integer $x
-     * @param  integer $y
-     * @param  string  $colorId
+     *
+     * @param int    $x
+     * @param int    $y
+     * @param string $colorId
+     *
      * @return void
      */
     public function drawBlock($x, $y, $colorId)
     {
         // fallback to parent if size not in scale.
         if (!in_array($this->size, array_keys($this->scale_table))) {
-
             parent::drawBlock($x, $y, $colorId);
 
             return;
@@ -83,7 +104,6 @@ class Svg extends BaconQrCodeSvg
 
         if ($this->position(self::UPPER_LEFT, $x, $y) || $this->position(self::LOWER_LEFT, $x, $y)
             || $this->position(self::UPPER_RIGHT, $x, $y) || $this->position(self::LOWER_RIGHT, $x, $y)) {
-
             $adjustment = ($this->blockSize / 2);
 
             parent::drawBlock($x - $adjustment, $y - $adjustment, $colorId);
@@ -102,13 +122,14 @@ class Svg extends BaconQrCodeSvg
         $circle->addAttribute('cx', $x);
         $circle->addAttribute('cy', $y);
         $circle->addAttribute('r', $this->blockSize / 2);
-        $circle->addAttribute('fill', '#' . $this->colors[$colorId]);
+        $circle->addAttribute('fill', '#'.$this->colors[$colorId]);
     }
 
     /**
-     * @param string  $orientation
-     * @param integer $x
-     * @param integer $y
+     * @param string $orientation
+     * @param int    $x
+     * @param int    $y
+     *
      * @return bool
      */
     protected function position($orientation, $x, $y)

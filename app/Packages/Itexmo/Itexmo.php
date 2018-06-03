@@ -1,11 +1,30 @@
 <?php
 
+/*
+ * This file is part of the UPCPI Software package.
+ *
+ * NOTICE OF LICENSE
+ *
+ * Licensed under the 3-clause BSD License.
+ *
+ * This source file is subject to the 3-clause BSD License that is
+ * bundled with this package in the LICENSE file.
+ *
+ * @version    alpha
+ *
+ * @author     Bertrand Kintanar <bertrand@imakintanar.com>
+ * @license    BSD License (3-clause)
+ * @copyright  (c) 2017-2018, UPC Engineering
+ *
+ * @link       https://bitbucket.org/bkintanar/upcpi
+ */
+
 namespace UPCEngineering\Packages\Itexmo;
 
 class Itexmo
 {
     const SEND_A_MESSAGE = 'api.php';
-    const SERVER_STATUS  = 'serverstatus.php';
+    const SERVER_STATUS = 'serverstatus.php';
     const APICODE_STATUS = 'apicode_info.php';
     const DISPLAY_OUTGOING = 'display_outgoing.php';
     const DELETE_OUTGOING_ALL = 'delete_outgoing_all.php';
@@ -25,7 +44,7 @@ class Itexmo
     }
 
     /**
-     * Send a Message
+     * Send a Message.
      *
      * "1" = Invalid Number.
      * "2" = Number prefix not supported. Please contact us so we can add.
@@ -55,7 +74,7 @@ class Itexmo
     }
 
     /**
-     * Check API Service Status and your SMS Server Status
+     * Check API Service Status and your SMS Server Status.
      *
      * "INVALID" = Invalid ApiCode OR "[{JSON Format}]" = JSON format of contents
      *
@@ -73,7 +92,7 @@ class Itexmo
     }
 
     /**
-     * Check ApiCode Info and Status
+     * Check ApiCode Info and Status.
      *
      * "INVALID APICODE" = Invalid ApiCode OR "[{JSON Format}]" = JSON format of contents
      *
@@ -85,7 +104,7 @@ class Itexmo
     }
 
     /**
-     * Show Pending or Outgoing SMS
+     * Show Pending or Outgoing SMS.
      *
      * "INVALID PARAMETERS" = Invalid sortby
      * "EMPTY" = No Outgoing or Pending SMS
@@ -103,7 +122,7 @@ class Itexmo
     }
 
     /**
-     * Delete All Pending or Outgoing SMS
+     * Delete All Pending or Outgoing SMS.
      *
      * "ERROR" OR "SUCCESS"
      *
@@ -111,7 +130,6 @@ class Itexmo
      */
     public function deleteOutgoingAll()
     {
-
         return $this->curl(self::DELETE_OUTGOING_ALL);
     }
 
@@ -133,7 +151,7 @@ class Itexmo
             $query = http_build_query($this->params);
         }
 
-        curl_setopt($ch, CURLOPT_URL, $this->api_base_path . $mode . '?' . $query);
+        curl_setopt($ch, CURLOPT_URL, $this->api_base_path.$mode.'?'.$query);
         curl_setopt($ch, $method, true);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 

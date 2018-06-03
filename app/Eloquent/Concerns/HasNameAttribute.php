@@ -1,14 +1,33 @@
 <?php
 
+/*
+ * This file is part of the UPCPI Software package.
+ *
+ * NOTICE OF LICENSE
+ *
+ * Licensed under the 3-clause BSD License.
+ *
+ * This source file is subject to the 3-clause BSD License that is
+ * bundled with this package in the LICENSE file.
+ *
+ * @version    alpha
+ *
+ * @author     Bertrand Kintanar <bertrand@imakintanar.com>
+ * @license    BSD License (3-clause)
+ * @copyright  (c) 2017-2018, UPC Engineering
+ *
+ * @link       https://bitbucket.org/bkintanar/upcpi
+ */
+
 namespace UPCEngineering\Eloquent\Concerns;
 
+use UPCEngineering\Eloquent\User;
 use UPCEngineering\Support\DisplayNames\BaseClass;
 use UPCEngineering\Support\DisplayNames\FirstNameLastName;
 use UPCEngineering\Support\DisplayNames\FirstNameMiddleInitial;
 use UPCEngineering\Support\DisplayNames\FirstNameMiddleInitialLastName;
 use UPCEngineering\Support\DisplayNames\FirstNameMiddleNameLastName;
 use UPCEngineering\Support\DisplayNames\LastNameCommaFirstName;
-use UPCEngineering\Eloquent\User;
 
 trait HasNameAttribute
 {
