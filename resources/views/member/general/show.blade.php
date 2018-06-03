@@ -49,9 +49,9 @@
                         </h2>
                         <small>{{ $member->department }} {{ __('app.u_department') }}</small>
                     </div>
-                    <img src="/images/avatars/{{ $image }}" width="140px" height="140px" class="img-circle circle-border m-b-md"
-                         alt="profile">
-{{--                    {!! display_uuid($member->uuid) !!}--}}
+                    {{--<img src="/images/avatars/{{ $image }}" width="140px" height="140px" class="img-circle circle-border m-b-md"--}}
+                         {{--alt="profile">--}}
+                    {!! display_uuid($member->uuid) !!}
                     <div>
                         <span><i class="fa fa-envelope-o"></i></span> |
                         <span><i class="fa fa-mobile-phone"></i></span> |

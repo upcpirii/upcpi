@@ -35,8 +35,11 @@ return [
     'u_address_2'      => 'Address 2',
     'u_city'           => 'City',
     'u_province'       => 'Province',
-    'u_postcode'      => 'Postcode',
-    'u_country'       => 'Country',
+    'u_postcode'       => 'Postcode',
+    'u_country'        => 'Country',
+
+    'u_male'   => 'Male',
+    'u_female' => 'Female',
 
     'u_active'   => 'Active',
     'u_inactive' => 'Inactive',

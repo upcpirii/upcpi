@@ -14,7 +14,7 @@
     <div class="form-group">
         <label class="col-md-2 control-label">{{ __('app.u_gender') }}</label>
         <div class="col-md-4">
-            <p class="form-control-static">{{ $member->gender == 'M' ? 'Male' : 'Female'  }}</p>
+            <p class="form-control-static">{{ $member->gender == 'M' ? __('app.u_male') : __('app.u_female')  }}</p>
         </div>
         <label class="col-md-2 control-label">{{ __('app.u_marital_status') }}</label>
         <div class="col-md-4">
@@ -38,7 +38,7 @@
         </div>
         <label class="col-md-2 control-label">{{ __('app.u_date_of_birth') }}</label>
         <div class="col-md-4">
-            <p class="form-control-static">{{ $member->date_of_birth }}</p>
+            <p class="form-control-static">{{ $member->date_of_birth->toDateString() }}</p>
         </div>
     </div>
 </form>
