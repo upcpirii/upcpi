@@ -36,6 +36,7 @@ class CreateTenantCommand extends Command
 
         if ($this->tenantExists($name, $email)) {
             $this->error("A tenant with name '{$name}' and/or '{$email}' already exists.");
+
             return;
         }
 
@@ -55,6 +56,7 @@ class CreateTenantCommand extends Command
     {
         return Customer::where('name', $name)->orWhere('email', $email)->exists();
     }
+
     private function registerTenant($name, $email)
     {
         // create a customer
@@ -77,9 +79,11 @@ class CreateTenantCommand extends Command
 
         return $hostname;
     }
+
     private function addAdmin($name, $email, $password)
     {
         $admin = User::create(['first_name' => $name, 'email' => $email, 'password' => Hash::make($password)]);
+
         return $admin;
     }
 }

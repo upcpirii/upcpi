@@ -27,6 +27,6 @@ class SearchController extends Controller
             return $members;
         }
 
-        return view('search.show', ['members' => $members]);
+        return view('search.show', compact('members'));
     }
 }

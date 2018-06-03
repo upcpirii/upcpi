@@ -17,10 +17,10 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
+        CreateTenantCommand::class,
         FlushCommand::class,
         ImportCommand::class,
         TinkerCommand::class,
-        CreateTenantCommand::class,
     ];
 
     /**
