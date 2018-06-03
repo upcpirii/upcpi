@@ -13,9 +13,12 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        'Illuminate\Auth\Events\Login' => [
-            'UPCEngineering\Listeners\LogSuccessfulLogin',
+        \Illuminate\Auth\Events\Login::class => [
+            \UPCEngineering\Listeners\LogSuccessfulLogin::class,
         ],
+        \Hyn\Tenancy\Events\Database\Created::class => [
+            \UPCEngineering\Listeners\GrantReferences::class,
+        ]
     ];
 
     /**

@@ -18,10 +18,10 @@ class CreateFamilyMembersTable extends Migration
             $table->unsignedInteger('family_id');
             $table->timestamps();
 
-            $table->primary(['member_id', 'family_id']);
+            $table->foreign('member_id')->references('id')->on('members')->onDelete('cascade');
+            $table->foreign('family_id')->references('id')->on('families')->onDelete('cascade');
 
-//            $table->foreign('member_id')->references('id')->on('members')->onDelete('cascade');
-//            $table->foreign('family_id')->references('id')->on('families')->onDelete('set null');
+            $table->primary(['member_id', 'family_id']);
         });
     }
 

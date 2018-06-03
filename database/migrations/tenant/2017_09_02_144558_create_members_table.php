@@ -13,7 +13,10 @@ class CreateMembersTable extends Migration
      */
     public function up()
     {
-        Schema::create('members', function (Blueprint $table) {
+        $database = config('database.connections.system.database');
+
+        Schema::create('members', function (Blueprint $table) use ($database) {
+
             $table->increments('id');
             $table->uuid('uuid')->unique()->index();
             $table->unsignedInteger('user_id')->nullable();
@@ -38,7 +41,9 @@ class CreateMembersTable extends Migration
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('department_id')->references('id')->on('departments')->onDelete('cascade');
-//            $table->foreign('marital_status_id')->references('id')->on('upcpi.marital_statuses')->onDelete('set null');
+
+            // foreign key to system marital_statuses table
+            $table->foreign('marital_status_id')->references('id')->on("{$database}.marital_statuses")->onDelete('set null');
         });
     }
 
