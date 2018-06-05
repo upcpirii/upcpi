@@ -63,47 +63,56 @@
 @endsection
 
 @push('scripts')
+    <script src="https://rawgit.com/moment/moment/2.22.2/min/moment.min.js" type="text/javascript"></script>
     <script src="{!! mix('js/jquery.dataTables.min.js') !!}" type="text/javascript"></script>
+
     <script>
-      $(function () {
-        $('#users-table').DataTable({
-          pageLength: 25,
-          responsive: true,
-          dom: '<"html5buttons"B>lTfgitp',
-          processing: true,
-          serverSide: true,
-          ajax: '{!! route('member.datatable.index') !!}',
-          buttons: [
-            {extend: 'copy'},
-            {extend: 'csv'},
-            {extend: 'excel', title: 'Member list'},
-            {extend: 'pdf', title: 'Member list'},
-            {
-              extend: 'print',
-              customize: function (win) {
-                $(win.document.body).addClass('white-bg');
-                $(win.document.body).css('font-size', '10px');
+        $(function () {
+            $('#users-table').DataTable({
+                pageLength: 25,
+                responsive: true,
+                dom: '<"html5buttons"B>lTfgitp',
+                processing: true,
+                serverSide: true,
+                ajax: '{!! route('member.datatable.index') !!}',
+                buttons: [
+                    {extend: 'copy'},
+                    {extend: 'csv'},
+                    {extend: 'excel', title: 'Member list'},
+                    {extend: 'pdf', title: 'Member list'},
+                    {
+                        extend: 'print',
+                        customize: function (win) {
+                            $(win.document.body).addClass('white-bg');
+                            $(win.document.body).css('font-size', '10px');
 
-                $(win.document.body).find('table')
-                  .addClass('compact')
-                  .css('font-size', 'inherit');
-              }
-            }
-          ],
-          columns: [
-            {
-              data: 'display_name', render: function (data, type, full, meta) {
-
-                return '<a title="' + data + '" href="/members/' + full.uuid + '">' + data + '</a>';
-              }
-            },
-            {data: 'department', name: 'department'},
-            {data: 'personal_email', name: 'personal_email'},
-            {data: 'mobile_phone', name: 'mobile_phone'},
-            {data: 'date_of_birth', name: 'date_of_birth'},
-            {data: 'last_attended_at', name: 'last_attended_at'},
-          ]
+                            $(win.document.body).find('table')
+                                .addClass('compact')
+                                .css('font-size', 'inherit');
+                        }
+                    }
+                ],
+                columns: [
+                    {
+                        data: 'display_name', render: function (data, type, full, meta) {
+                            return '<a title="' + data + '" href="/members/' + full.uuid + '">' + data + '</a>';
+                        }
+                    },
+                    {data: 'department', name: 'department'},
+                    {data: 'personal_email', name: 'personal_email'},
+                    {data: 'mobile_phone', name: 'mobile_phone'},
+                    {
+                        data: 'date_of_birth', render: function (data, type, full, meta) {
+                            return moment(data).format('MMMM D, YYYY');
+                        }, name: 'date_of_birth'
+                    },
+                    {
+                        data: 'last_attended_at', render: function (data, type, full, meta) {
+                            return moment(data).fromNow();
+                        }, name: 'last_attended_at'
+                    },
+                ]
+            });
         });
-      });
     </script>
 @endpush
